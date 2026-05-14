@@ -1,6 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/catali-logo.png";
+import dishTumbada from "@/assets/dish-tumbada.jpg";
+import dishMole from "@/assets/dish-mole.jpg";
+import dishPicadas from "@/assets/dish-picadas.jpg";
+import dishPescado from "@/assets/dish-pescado.jpg";
+import dishCafe from "@/assets/dish-cafe.jpg";
+import dishEmpanadas from "@/assets/dish-empanadas.jpg";
+import fondaInterior from "@/assets/fonda-interior.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
