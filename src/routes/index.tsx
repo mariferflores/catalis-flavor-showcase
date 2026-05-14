@@ -207,9 +207,13 @@ function Nosotros() {
               ))}
             </ul>
           </div>
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-paper bg-gradient-warm flex items-center justify-center">
-            <img src={logo} alt="Catalí" className="w-2/3 opacity-90" />
-            <div className="absolute bottom-4 left-4 right-4 font-hand text-xl text-foreground/80 text-center">
+          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-paper">
+            <img src={fondaInterior} alt="Interior de Catalí" className="w-full h-full object-cover" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
+            <div className="absolute -top-3 -right-3 w-24 h-24 rounded-full bg-accent flex items-center justify-center text-accent-foreground text-center font-display font-bold leading-tight rotate-12 shadow-paper">
+              <span>desde<br/>2009</span>
+            </div>
+            <div className="absolute bottom-5 left-5 right-5 font-hand text-2xl text-background text-center">
               "La cocina es el corazón de la casa."
             </div>
           </div>
