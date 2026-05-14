@@ -1,6 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/catali-logo.png";
+import dishTumbada from "@/assets/dish-tumbada.jpg";
+import dishMole from "@/assets/dish-mole.jpg";
+import dishPicadas from "@/assets/dish-picadas.jpg";
+import dishPescado from "@/assets/dish-pescado.jpg";
+import dishCafe from "@/assets/dish-cafe.jpg";
+import dishEmpanadas from "@/assets/dish-empanadas.jpg";
+import fondaInterior from "@/assets/fonda-interior.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -71,8 +78,10 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
+      <Especialidades />
       <Nosotros />
       <Menu />
+      <Testimonios />
       <Avisos />
       <Mapa />
       <Contacto />
@@ -200,9 +209,13 @@ function Nosotros() {
               ))}
             </ul>
           </div>
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-paper bg-gradient-warm flex items-center justify-center">
-            <img src={logo} alt="Catalí" className="w-2/3 opacity-90" />
-            <div className="absolute bottom-4 left-4 right-4 font-hand text-xl text-foreground/80 text-center">
+          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-paper">
+            <img src={fondaInterior} alt="Interior de Catalí" className="w-full h-full object-cover" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
+            <div className="absolute -top-3 -right-3 w-24 h-24 rounded-full bg-accent flex items-center justify-center text-accent-foreground text-center font-display font-bold leading-tight rotate-12 shadow-paper">
+              <span>desde<br/>2009</span>
+            </div>
+            <div className="absolute bottom-5 left-5 right-5 font-hand text-2xl text-background text-center">
               "La cocina es el corazón de la casa."
             </div>
           </div>
@@ -212,63 +225,183 @@ function Nosotros() {
   );
 }
 
-const MENU_DATA = [
+type MenuItem = { name: string; desc: string; price: string; img?: string; tag?: string };
+
+const MENU_DATA: { cat: string; emoji: string; items: MenuItem[] }[] = [
   {
     cat: "Desayunos",
+    emoji: "☕",
     items: [
-      ["Picadas veracruzanas", "Tres picadas con salsa verde, roja y mole, queso fresco y cebolla.", "$95"],
-      ["Huevos tirados", "Frijoles negros con huevo revuelto, plátano macho y totopos.", "$85"],
-      ["Enfrijoladas de la casa", "Tortillas bañadas en frijol negro con epazote, crema y queso.", "$90"],
-      ["Café de olla", "Con canela, piloncillo y un toque de cariño.", "$30"],
+      { name: "Picadas veracruzanas", desc: "Tres picadas con salsa verde, roja y mole, queso fresco y cebolla.", price: "$95", img: dishPicadas, tag: "Favorito" },
+      { name: "Huevos tirados", desc: "Frijoles negros con huevo revuelto, plátano macho y totopos.", price: "$85" },
+      { name: "Enfrijoladas de la casa", desc: "Tortillas bañadas en frijol negro con epazote, crema y queso.", price: "$90" },
+      { name: "Café de olla", desc: "Con canela, piloncillo y un toque de cariño.", price: "$30", img: dishCafe },
     ],
   },
   {
     cat: "Platos fuertes",
+    emoji: "🍲",
     items: [
-      ["Arroz a la tumbada", "Arroz caldoso con camarón, pulpo, jaiba y pescado del día.", "$210"],
-      ["Mole de Xico", "Pollo bañado en mole dulce de Xico, arroz blanco y tortillas hechas a mano.", "$165"],
-      ["Pescado a la veracruzana", "Filete con jitomate, aceitunas, alcaparras y chiles güeros.", "$195"],
-      ["Chilpachole de jaiba", "Caldo espeso de jitomate, chile y jaiba fresca.", "$175"],
+      { name: "Arroz a la tumbada", desc: "Arroz caldoso con camarón, pulpo, jaiba y pescado del día.", price: "$210", img: dishTumbada, tag: "Recomendado" },
+      { name: "Mole de Xico", desc: "Pollo bañado en mole dulce de Xico, arroz blanco y tortillas hechas a mano.", price: "$165", img: dishMole },
+      { name: "Pescado a la veracruzana", desc: "Filete con jitomate, aceitunas, alcaparras y chiles güeros.", price: "$195", img: dishPescado },
+      { name: "Chilpachole de jaiba", desc: "Caldo espeso de jitomate, chile y jaiba fresca.", price: "$175" },
     ],
   },
   {
     cat: "Antojitos & postres",
+    emoji: "🌶️",
     items: [
-      ["Empanadas de plátano", "Rellenas de frijol o queso, fritas al momento.", "$70"],
-      ["Tamales de chipilín", "Envueltos en hoja, suavecitos y aromáticos.", "$45"],
-      ["Dulce de calabaza", "Con piloncillo, canela y leche evaporada.", "$60"],
-      ["Agua de jamaica", "Recién hecha, fría y bien dulce.", "$25"],
+      { name: "Empanadas de plátano", desc: "Rellenas de frijol o queso, fritas al momento.", price: "$70", img: dishEmpanadas, tag: "Nuevo" },
+      { name: "Tamales de chipilín", desc: "Envueltos en hoja, suavecitos y aromáticos.", price: "$45" },
+      { name: "Dulce de calabaza", desc: "Con piloncillo, canela y leche evaporada.", price: "$60" },
+      { name: "Agua de jamaica", desc: "Recién hecha, fría y bien dulce.", price: "$25" },
     ],
   },
 ];
 
 function Menu() {
+  const [active, setActive] = useState(0);
+  const group = MENU_DATA[active];
   return (
-    <section id="menu" className="py-24 bg-background">
-      <div className="max-w-6xl mx-auto px-5">
+    <section id="menu" className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute top-10 right-0 text-[18rem] font-display text-primary/[0.03] leading-none pointer-events-none select-none">
+        Menú
+      </div>
+      <div className="max-w-6xl mx-auto px-5 relative">
         <SectionHeader
           kicker="— el menú —"
           title="Lo que hoy hay en la cazuela"
           sub="Cocina del día con ingredientes de temporada. El menú cambia con lo que llega del mercado."
         />
-        <div className="grid md:grid-cols-3 gap-8">
-          {MENU_DATA.map((g) => (
-            <div key={g.cat} className="bg-card rounded-2xl p-6 shadow-paper border border-border/60">
-              <h3 className="font-display text-2xl text-primary border-b border-dashed border-border pb-3 mb-4">
-                {g.cat}
-              </h3>
-              <ul className="space-y-4">
-                {g.items.map(([n, d, p]) => (
-                  <li key={n}>
-                    <div className="flex items-baseline justify-between gap-3">
-                      <span className="font-semibold">{n}</span>
-                      <span className="font-display text-primary font-bold">{p}</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground mt-1">{d}</p>
-                  </li>
-                ))}
-              </ul>
+
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {MENU_DATA.map((g, i) => (
+            <button
+              key={g.cat}
+              onClick={() => setActive(i)}
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                active === i
+                  ? "bg-primary text-primary-foreground shadow-paper scale-105"
+                  : "bg-card text-foreground/70 hover:bg-muted border border-border"
+              }`}
+            >
+              <span className="mr-1.5">{g.emoji}</span>
+              {g.cat}
+            </button>
+          ))}
+        </div>
+
+        <div key={active} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-float-in">
+          {group.items.map((it) => (
+            <article
+              key={it.name}
+              className="group bg-card rounded-2xl overflow-hidden shadow-paper border border-border/60 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col"
+            >
+              {it.img ? (
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={it.img}
+                    alt={it.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {it.tag && (
+                    <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold shadow-paper">
+                      {it.tag}
+                    </span>
+                  )}
+                  <span className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-background/95 backdrop-blur text-primary font-display font-bold shadow-paper">
+                    {it.price}
+                  </span>
+                </div>
+              ) : (
+                <div className="relative aspect-[4/3] bg-gradient-warm flex items-center justify-center">
+                  <span className="text-6xl opacity-40">{group.emoji}</span>
+                  <span className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-background/95 text-primary font-display font-bold shadow-paper">
+                    {it.price}
+                  </span>
+                </div>
+              )}
+              <div className="p-5 flex-1 flex flex-col">
+                <h3 className="font-display text-xl font-bold text-foreground">{it.name}</h3>
+                <p className="text-sm text-muted-foreground mt-2 flex-1">{it.desc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p className="text-center mt-10 font-hand text-2xl text-primary">
+          ¿Algo no aparece? Pregunta — siempre hay algo en el comal.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+const ESPECIALIDADES = [
+  { img: dishTumbada, label: "Arroz a la tumbada", note: "El plato del Golfo" },
+  { img: dishMole, label: "Mole de Xico", note: "Receta de la abuela" },
+  { img: dishPicadas, label: "Picadas", note: "Hechas al momento" },
+  { img: dishEmpanadas, label: "Empanadas", note: "Doradas en el comal" },
+];
+
+function Especialidades() {
+  return (
+    <section className="py-20 bg-gradient-warm border-y border-border">
+      <div className="max-w-6xl mx-auto px-5">
+        <div className="flex items-end justify-between gap-6 mb-10 flex-wrap">
+          <div>
+            <p className="font-hand text-2xl text-primary">— de la casa —</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold">Nuestras especialidades</h2>
+          </div>
+          <a href="#menu" className="text-primary font-medium hover:underline">Ver menú completo →</a>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {ESPECIALIDADES.map((s) => (
+            <div key={s.label} className="group relative aspect-square rounded-2xl overflow-hidden shadow-paper">
+              <img
+                src={s.img}
+                alt={s.label}
+                loading="lazy"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-background">
+                <p className="font-hand text-lg text-accent">{s.note}</p>
+                <p className="font-display text-lg font-bold leading-tight">{s.label}</p>
+              </div>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const TESTIMONIOS = [
+  { name: "Lucía M.", text: "El arroz a la tumbada me transportó a Boca del Río. ¡Como en casa!", role: "Cliente desde 2018" },
+  { name: "Don Rafael", text: "Vengo cada jueves por el mole. Servicio cálido y porciones honestas.", role: "Vecino del barrio" },
+  { name: "Ana & Pepe", text: "El café de olla y las picadas son nuestro ritual de los sábados.", role: "Visitan los fines" },
+];
+
+function Testimonios() {
+  return (
+    <section className="py-24 bg-background">
+      <div className="max-w-6xl mx-auto px-5">
+        <SectionHeader kicker="— lo que dicen —" title="Voces de la mesa" />
+        <div className="grid md:grid-cols-3 gap-6">
+          {TESTIMONIOS.map((t) => (
+            <figure key={t.name} className="relative bg-card p-7 rounded-2xl shadow-paper border border-border/60">
+              <span className="absolute -top-4 left-6 text-7xl font-display text-primary/30 leading-none">&ldquo;</span>
+              <blockquote className="pt-3 text-foreground/85 leading-relaxed font-hand text-2xl">
+                {t.text}
+              </blockquote>
+              <figcaption className="mt-5 pt-4 border-t border-dashed border-border">
+                <p className="font-display font-bold text-primary">{t.name}</p>
+                <p className="text-xs text-muted-foreground">{t.role}</p>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
