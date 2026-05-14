@@ -78,8 +78,10 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
+      <Especialidades />
       <Nosotros />
       <Menu />
+      <Testimonios />
       <Avisos />
       <Mapa />
       <Contacto />
