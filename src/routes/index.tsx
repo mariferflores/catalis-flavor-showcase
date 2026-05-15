@@ -623,10 +623,10 @@ function Contacto() {
         <SectionHeader kicker="— escríbenos —" title="¿Reservar mesa? ¿Pedido para llevar?" />
         <div className="grid md:grid-cols-2 gap-6">
           {[
-            ["Teléfono", "228 123 4567", "tel:+522281234567"],
-            ["WhatsApp", "Mándanos un mensaje", "https://wa.me/522281234567"],
+            ["Teléfono", "444 321 9153", "tel:+524443219153"],
+            ["WhatsApp", "Mándanos un mensaje", "https://wa.me/524443219153"],
             ["Correo", "hola@catali.mx", "mailto:hola@catali.mx"],
-            ["Instagram", "@catali.mx", "https://instagram.com"],
+            ["Instagram", "@food.by.catali", "https://instagram.com/food.by.catali"],
           ].map(([t, v, h]) => (
             <a
               key={t}
