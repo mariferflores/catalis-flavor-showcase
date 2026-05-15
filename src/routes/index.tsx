@@ -198,9 +198,9 @@ function Nosotros() {
             </p>
             <ul className="grid grid-cols-3 gap-4 pt-4">
               {[
-                ["+15", "años de oficio"],
+                ["+2", "años de oficio"],
                 ["100%", "recetas caseras"],
-                ["7", "días a la semana"],
+                ["6", "días a la semana"],
               ].map(([n, l]) => (
                 <li key={l} className="text-center p-4 rounded-xl bg-card shadow-paper">
                   <div className="font-display text-3xl text-primary font-bold">{n}</div>
