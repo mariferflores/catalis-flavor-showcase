@@ -574,13 +574,13 @@ function Mapa() {
         <SectionHeader
           kicker="— ven a vernos —"
           title="¿Dónde estamos?"
-          sub="En el corazón de Xalapa, a una cuadra del parque."
+          sub="En San Luis Potosí, te esperamos con la mesa puesta."
         />
         <div className="grid md:grid-cols-3 gap-6">
           <div className="md:col-span-2 rounded-2xl overflow-hidden shadow-paper border border-border aspect-[16/10]">
             <iframe
               title="Mapa Catalí"
-              src="https://www.google.com/maps?q=Xalapa,Veracruz,Mexico&output=embed"
+              src="https://www.google.com/maps?q=Calle+Jes%C3%BAs+Goytortua+78268+San+Luis+Potos%C3%AD&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -592,17 +592,17 @@ function Mapa() {
             <div>
               <h4 className="font-display text-xl font-bold">Dirección</h4>
               <p className="text-muted-foreground mt-1">
-                Av. Independencia 123<br />Centro, Xalapa, Veracruz
+                Calle Jesús Goytortua<br />78268 San Luis Potosí, S.L.P.
               </p>
             </div>
             <div>
               <h4 className="font-display text-xl font-bold">Horario</h4>
               <p className="text-muted-foreground mt-1">
-                Lun – Sáb · 8:00 – 19:00<br />Domingo · 9:00 – 17:00
+                Lun – Vie · 9:00 – 17:00<br />Sábado · 9:00 – 14:00<br />Domingo · cerrado
               </p>
             </div>
             <a
-              href="https://www.google.com/maps?q=Xalapa,Veracruz,Mexico"
+              href="https://www.google.com/maps?q=Calle+Jes%C3%BAs+Goytortua+78268+San+Luis+Potos%C3%AD"
               target="_blank"
               rel="noreferrer"
               className="inline-block w-full text-center px-4 py-2.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90"
