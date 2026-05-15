@@ -198,9 +198,9 @@ function Nosotros() {
             </p>
             <ul className="grid grid-cols-3 gap-4 pt-4">
               {[
-                ["+15", "años de oficio"],
+                ["+2", "años de oficio"],
                 ["100%", "recetas caseras"],
-                ["7", "días a la semana"],
+                ["6", "días a la semana"],
               ].map(([n, l]) => (
                 <li key={l} className="text-center p-4 rounded-xl bg-card shadow-paper">
                   <div className="font-display text-3xl text-primary font-bold">{n}</div>
@@ -232,30 +232,34 @@ const MENU_DATA: { cat: string; emoji: string; items: MenuItem[] }[] = [
     cat: "Desayunos",
     emoji: "☕",
     items: [
-      { name: "Picadas veracruzanas", desc: "Tres picadas con salsa verde, roja y mole, queso fresco y cebolla.", price: "$95", img: dishPicadas, tag: "Favorito" },
-      { name: "Huevos tirados", desc: "Frijoles negros con huevo revuelto, plátano macho y totopos.", price: "$85" },
-      { name: "Enfrijoladas de la casa", desc: "Tortillas bañadas en frijol negro con epazote, crema y queso.", price: "$90" },
-      { name: "Café de olla", desc: "Con canela, piloncillo y un toque de cariño.", price: "$30", img: dishCafe },
+      { name: "Gorditas", desc: "Masa doradita rellena de tu guisado favorito. Hechas al momento y con mucho sabor casero.", price: "$20", img: dishPicadas, tag: "Favorito" },
+      { name: "Estrujadas", desc: "Sencillas $100 · con huevo $110 · con pollo $120 · con arrachera $130.", price: "desde $100" },
+      { name: "Chilaquiles", desc: "Sencillos $100 · con huevo $110 · con pollo $120 · con arrachera $130.", price: "desde $100", img: dishMole },
+      { name: "Bocoles", desc: "Tradicionales bocoles de masa, recién hechos en el comal.", price: "$100", img: dishEmpanadas },
+      { name: "Huevos al gusto", desc: "Revueltos, estrellados, a la mexicana o como tú los pidas.", price: "$75" },
+      { name: "Omelette", desc: "Esponjadito, con los rellenos clásicos de la casa.", price: "$90" },
     ],
   },
   {
-    cat: "Platos fuertes",
+    cat: "Guisos",
     emoji: "🍲",
     items: [
-      { name: "Arroz a la tumbada", desc: "Arroz caldoso con camarón, pulpo, jaiba y pescado del día.", price: "$210", img: dishTumbada, tag: "Recomendado" },
-      { name: "Mole de Xico", desc: "Pollo bañado en mole dulce de Xico, arroz blanco y tortillas hechas a mano.", price: "$165", img: dishMole },
-      { name: "Pescado a la veracruzana", desc: "Filete con jitomate, aceitunas, alcaparras y chiles güeros.", price: "$195", img: dishPescado },
-      { name: "Chilpachole de jaiba", desc: "Caldo espeso de jitomate, chile y jaiba fresca.", price: "$175" },
+      { name: "Picadillo", desc: "Carne molida sazonada con verduras y especias.", price: "" },
+      { name: "Chorizo", desc: "Chorizo casero bien dorado.", price: "" },
+      { name: "Bisteck", desc: "Bisteck guisado, suavecito y lleno de sabor.", price: "" },
+      { name: "Frijoles con queso", desc: "Frijoles refritos con queso fundido encima.", price: "" },
+      { name: "Pollo", desc: "Pollo deshebrado guisado de la casa.", price: "" },
     ],
   },
   {
-    cat: "Antojitos & postres",
+    cat: "Salsas",
     emoji: "🌶️",
     items: [
-      { name: "Empanadas de plátano", desc: "Rellenas de frijol o queso, fritas al momento.", price: "$70", img: dishEmpanadas, tag: "Nuevo" },
-      { name: "Tamales de chipilín", desc: "Envueltos en hoja, suavecitos y aromáticos.", price: "$45" },
-      { name: "Dulce de calabaza", desc: "Con piloncillo, canela y leche evaporada.", price: "$60" },
-      { name: "Agua de jamaica", desc: "Recién hecha, fría y bien dulce.", price: "$25" },
+      { name: "Salsa de jalapeño", desc: "Verde, picosita y fresca.", price: "" },
+      { name: "Salsa de tomatillo", desc: "Tomatillo asado, equilibrada y aromática.", price: "" },
+      { name: "Salsa molcajete", desc: "Molida en piedra, rústica y con cuerpo.", price: "" },
+      { name: "Salsa de ajonjolí", desc: "Cremosa, con notas tostadas de ajonjolí.", price: "" },
+      { name: "Salsa de chorizo", desc: "Especialidad de la casa, con chorizo casero.", price: "" },
     ],
   },
 ];
@@ -311,16 +315,20 @@ function Menu() {
                       {it.tag}
                     </span>
                   )}
-                  <span className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-background/95 backdrop-blur text-primary font-display font-bold shadow-paper">
-                    {it.price}
-                  </span>
+                  {it.price && (
+                    <span className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-background/95 backdrop-blur text-primary font-display font-bold shadow-paper">
+                      {it.price}
+                    </span>
+                  )}
                 </div>
               ) : (
                 <div className="relative aspect-[4/3] bg-gradient-warm flex items-center justify-center">
                   <span className="text-6xl opacity-40">{group.emoji}</span>
-                  <span className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-background/95 text-primary font-display font-bold shadow-paper">
-                    {it.price}
-                  </span>
+                  {it.price && (
+                    <span className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-background/95 text-primary font-display font-bold shadow-paper">
+                      {it.price}
+                    </span>
+                  )}
                 </div>
               )}
               <div className="p-5 flex-1 flex flex-col">
@@ -566,13 +574,13 @@ function Mapa() {
         <SectionHeader
           kicker="— ven a vernos —"
           title="¿Dónde estamos?"
-          sub="En el corazón de Xalapa, a una cuadra del parque."
+          sub="En San Luis Potosí, te esperamos con la mesa puesta."
         />
         <div className="grid md:grid-cols-3 gap-6">
           <div className="md:col-span-2 rounded-2xl overflow-hidden shadow-paper border border-border aspect-[16/10]">
             <iframe
               title="Mapa Catalí"
-              src="https://www.google.com/maps?q=Xalapa,Veracruz,Mexico&output=embed"
+              src="https://www.google.com/maps?q=Calle+Jes%C3%BAs+Goytortua+78268+San+Luis+Potos%C3%AD&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -584,17 +592,17 @@ function Mapa() {
             <div>
               <h4 className="font-display text-xl font-bold">Dirección</h4>
               <p className="text-muted-foreground mt-1">
-                Av. Independencia 123<br />Centro, Xalapa, Veracruz
+                Calle Jesús Goytortua<br />78268 San Luis Potosí, S.L.P.
               </p>
             </div>
             <div>
               <h4 className="font-display text-xl font-bold">Horario</h4>
               <p className="text-muted-foreground mt-1">
-                Lun – Sáb · 8:00 – 19:00<br />Domingo · 9:00 – 17:00
+                Lun – Vie · 9:00 – 17:00<br />Sábado · 9:00 – 14:00<br />Domingo · cerrado
               </p>
             </div>
             <a
-              href="https://www.google.com/maps?q=Xalapa,Veracruz,Mexico"
+              href="https://www.google.com/maps?q=Calle+Jes%C3%BAs+Goytortua+78268+San+Luis+Potos%C3%AD"
               target="_blank"
               rel="noreferrer"
               className="inline-block w-full text-center px-4 py-2.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90"
@@ -615,10 +623,10 @@ function Contacto() {
         <SectionHeader kicker="— escríbenos —" title="¿Reservar mesa? ¿Pedido para llevar?" />
         <div className="grid md:grid-cols-2 gap-6">
           {[
-            ["Teléfono", "228 123 4567", "tel:+522281234567"],
-            ["WhatsApp", "Mándanos un mensaje", "https://wa.me/522281234567"],
+            ["Teléfono", "444 321 9153", "tel:+524443219153"],
+            ["WhatsApp", "Mándanos un mensaje", "https://wa.me/524443219153"],
             ["Correo", "hola@catali.mx", "mailto:hola@catali.mx"],
-            ["Instagram", "@catali.mx", "https://instagram.com"],
+            ["Instagram", "@food.by.catali", "https://instagram.com/food.by.catali"],
           ].map(([t, v, h]) => (
             <a
               key={t}
