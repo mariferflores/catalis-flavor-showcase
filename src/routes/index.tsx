@@ -315,16 +315,20 @@ function Menu() {
                       {it.tag}
                     </span>
                   )}
-                  <span className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-background/95 backdrop-blur text-primary font-display font-bold shadow-paper">
-                    {it.price}
-                  </span>
+                  {it.price && (
+                    <span className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-background/95 backdrop-blur text-primary font-display font-bold shadow-paper">
+                      {it.price}
+                    </span>
+                  )}
                 </div>
               ) : (
                 <div className="relative aspect-[4/3] bg-gradient-warm flex items-center justify-center">
                   <span className="text-6xl opacity-40">{group.emoji}</span>
-                  <span className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-background/95 text-primary font-display font-bold shadow-paper">
-                    {it.price}
-                  </span>
+                  {it.price && (
+                    <span className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-background/95 text-primary font-display font-bold shadow-paper">
+                      {it.price}
+                    </span>
+                  )}
                 </div>
               )}
               <div className="p-5 flex-1 flex flex-col">
