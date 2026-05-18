@@ -239,7 +239,7 @@ const MENU_DATA: { cat: string; emoji: string; items: MenuItem[] }[] = [
       { name: "Chilaquiles", desc: "Sencillos $100 · con huevo $110 · con pollo $120 · con arrachera $130.", price: "desde $100", img: dishMole },
       { name: "Bocoles", desc: "Tradicionales bocoles de masa, recién hechos en el comal.", price: "$100", img: dishEmpanadas },
       { name: "Huevos al gusto", desc: "Revueltos, estrellados, a la mexicana o como tú los pidas.", price: "$75" },
-      { name: "Omelette", desc: "Esponjadito, con los rellenos clásicos de la casa.", price: "$90" },
+      { name: "Orden de flautas de pollo", desc: "Flautas doraditas de pollo, con lechuga, crema, queso y cebolla curtida.", price: "$120", img: dishFlautas, tag: "Recomendado" },
     ],
   },
   {
