@@ -10,6 +10,11 @@ import espHamburguesa from "@/assets/esp-hamburguesa.png";
 import espSalsaMacha from "@/assets/esp-salsa-macha.png";
 import espChilesNogada from "@/assets/esp-chiles-nogada.png";
 import dishFlautas from "@/assets/dish-flautas.png";
+import dishEstrujadas from "@/assets/dish-estrujadas.png";
+import dishHuevos from "@/assets/dish-huevos.png";
+import dishGorditas from "@/assets/dish-gorditas.png";
+import dishBocoles from "@/assets/dish-bocoles.png";
+import dishChilaquiles from "@/assets/dish-chilaquiles.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -234,11 +239,11 @@ const MENU_DATA: { cat: string; emoji: string; items: MenuItem[] }[] = [
     cat: "Desayunos",
     emoji: "☕",
     items: [
-      { name: "Gorditas", desc: "Masa doradita rellena de tu guisado favorito. Hechas al momento y con mucho sabor casero.", price: "$20", img: dishPicadas, tag: "Favorito" },
-      { name: "Estrujadas", desc: "Sencillas $100 · con huevo $110 · con pollo $120 · con arrachera $130.", price: "desde $100" },
-      { name: "Chilaquiles", desc: "Sencillos $100 · con huevo $110 · con pollo $120 · con arrachera $130.", price: "desde $100", img: dishMole },
-      { name: "Bocoles", desc: "Tradicionales bocoles de masa, recién hechos en el comal.", price: "$100", img: dishEmpanadas },
-      { name: "Huevos al gusto", desc: "Revueltos, estrellados, a la mexicana o como tú los pidas.", price: "$75" },
+      { name: "Gorditas", desc: "Masa doradita rellena de tu guisado favorito. Hechas al momento y con mucho sabor casero.", price: "$20", img: dishGorditas, tag: "Favorito" },
+      { name: "Estrujadas", desc: "Sencillas $100 · con huevo $110 · con pollo $120 · con arrachera $130.", price: "desde $100", img: dishEstrujadas },
+      { name: "Chilaquiles", desc: "Sencillos $100 · con huevo $110 · con pollo $120 · con arrachera $130.", price: "desde $100", img: dishChilaquiles },
+      { name: "Bocoles", desc: "Tradicionales bocoles de masa, recién hechos en el comal.", price: "$100", img: dishBocoles },
+      { name: "Huevos al gusto", desc: "Revueltos, estrellados, a la mexicana o como tú los pidas.", price: "$75", img: dishHuevos },
       { name: "Orden de flautas de pollo", desc: "Flautas doraditas de pollo, con lechuga, crema, queso y cebolla curtida.", price: "$120", img: dishFlautas, tag: "Recomendado" },
     ],
   },
