@@ -220,7 +220,7 @@ function Nosotros() {
             <img src={fondaInterior} alt="Interior de Catalí" className="w-full h-full object-cover" loading="lazy" />
             <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
             <div className="absolute -top-3 -right-3 w-24 h-24 rounded-full bg-accent flex items-center justify-center text-accent-foreground text-center font-display font-bold leading-tight rotate-12 shadow-paper">
-              <span>desde<br/>2009</span>
+              <span>desde<br/>2024</span>
             </div>
             <div className="absolute bottom-5 left-5 right-5 font-hand text-2xl text-background text-center">
               "La cocina es el corazón de la casa."
