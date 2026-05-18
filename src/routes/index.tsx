@@ -1,13 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/catali-logo.png";
-import dishTumbada from "@/assets/dish-tumbada.jpg";
 import dishMole from "@/assets/dish-mole.jpg";
 import dishPicadas from "@/assets/dish-picadas.jpg";
-import dishPescado from "@/assets/dish-pescado.jpg";
-import dishCafe from "@/assets/dish-cafe.jpg";
 import dishEmpanadas from "@/assets/dish-empanadas.jpg";
 import fondaInterior from "@/assets/fonda-interior.jpg";
+import espChilaquiles from "@/assets/esp-chilaquiles.png";
+import espHamburguesa from "@/assets/esp-hamburguesa.png";
+import espSalsaMacha from "@/assets/esp-salsa-macha.png";
+import espChilesNogada from "@/assets/esp-chiles-nogada.png";
+import dishFlautas from "@/assets/dish-flautas.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -237,7 +239,7 @@ const MENU_DATA: { cat: string; emoji: string; items: MenuItem[] }[] = [
       { name: "Chilaquiles", desc: "Sencillos $100 · con huevo $110 · con pollo $120 · con arrachera $130.", price: "desde $100", img: dishMole },
       { name: "Bocoles", desc: "Tradicionales bocoles de masa, recién hechos en el comal.", price: "$100", img: dishEmpanadas },
       { name: "Huevos al gusto", desc: "Revueltos, estrellados, a la mexicana o como tú los pidas.", price: "$75" },
-      { name: "Omelette", desc: "Esponjadito, con los rellenos clásicos de la casa.", price: "$90" },
+      { name: "Orden de flautas de pollo", desc: "Flautas doraditas de pollo, con lechuga, crema, queso y cebolla curtida.", price: "$120", img: dishFlautas, tag: "Recomendado" },
     ],
   },
   {
@@ -348,10 +350,10 @@ function Menu() {
 }
 
 const ESPECIALIDADES = [
-  { img: dishTumbada, label: "Arroz a la tumbada", note: "El plato del Golfo" },
-  { img: dishMole, label: "Mole de Xico", note: "Receta de la abuela" },
-  { img: dishPicadas, label: "Picadas", note: "Hechas al momento" },
-  { img: dishEmpanadas, label: "Empanadas", note: "Doradas en el comal" },
+  { img: espChilaquiles, label: "Chilaquiles en salsa de jalapeño", note: "Verdes y picositos" },
+  { img: espHamburguesa, label: "Hamburguesa Catalí", note: "Recién hecha a la plancha" },
+  { img: espSalsaMacha, label: "Salsa Matcha", note: "Hecha en casa" },
+  { img: espChilesNogada, label: "Chiles en Nogada", note: "De temporada" },
 ];
 
 function Especialidades() {
