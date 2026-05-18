@@ -350,10 +350,10 @@ function Menu() {
 }
 
 const ESPECIALIDADES = [
-  { img: dishTumbada, label: "Arroz a la tumbada", note: "El plato del Golfo" },
-  { img: dishMole, label: "Mole de Xico", note: "Receta de la abuela" },
-  { img: dishPicadas, label: "Picadas", note: "Hechas al momento" },
-  { img: dishEmpanadas, label: "Empanadas", note: "Doradas en el comal" },
+  { img: espChilaquiles, label: "Chilaquiles en salsa de jalapeño", note: "Verdes y picositos" },
+  { img: espHamburguesa, label: "Hamburguesa Catalí", note: "Recién hecha a la plancha" },
+  { img: espSalsaMacha, label: "Salsa Matcha", note: "Hecha en casa" },
+  { img: espChilesNogada, label: "Chiles en Nogada", note: "De temporada" },
 ];
 
 function Especialidades() {
